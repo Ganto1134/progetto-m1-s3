@@ -45,7 +45,7 @@ console.log(me);
   Crea del codice per aggiungere programmaticamente all'oggetto precedentemente creato un array chiamato "skills", contenente i linguaggi di programmazione che conosci.
 */
 
-me.skills = ['JavaScript', 'Python']
+me.skills = ['JavaScript', 'Python'];
 console.log(me);
 
 /* ESERCIZIO F
@@ -94,7 +94,7 @@ function splitMe(stringa) {
   return stringa.split(' ');
 }
 
-console.log(splitMe('Mi piace programmare'))
+console.log(splitMe('Mi piace programmare'));
 
 /* ESERCIZIO 4
   Crea una funzione chiamata "deleteOne" che riceve una stringa e un booleano come parametri.
@@ -108,7 +108,7 @@ function deleteOne(stringa, booleano) {
     return stringa.slice(0, -1);
   }
 }
-console.log(deleteOne('Mi piace programmare', true))
+console.log(deleteOne('Mi piace programmare', true));
 
 
 /* ESERCIZIO 5
@@ -118,16 +118,16 @@ console.log(deleteOne('Mi piace programmare', true))
 */
 
 function onlyLetters(stringa) { 
-  return stringa.replace(/[0-9]/g, '');
+  return stringa.replace(/[0-9]/g, ''); 
 }
-console.log(onlyLetters('So proggrammare in 4 lingue diverse'))
+console.log(onlyLetters('So proggrammare in 4 lingue diverse'));
 
 /* ESERCIZIO 6
   Crea una funzione chiamata "isThisAnEmail" che riceve una stringa come parametro e ritorna true se la stringa è un valido indirizzo email.
 */
 
 function isThisAnEmail(stringa) { 
-  var input = document.createElement('input');
+  let input = document.createElement('input');
     input.setAttribute('type', 'email');
     input.value = stringa;
     return input.checkValidity();
@@ -177,9 +177,9 @@ console.log(rollTheDices(4));
 */
 
 function howManyDays(date) { 
-  let diff = new Date().getTime() - new Date(date).getTime();
-  let days = Math.floor(diff / (1000 * 60 * 60 * 24));
-  return days;
+  let differenza = new Date().getTime() - new Date(date).getTime();
+  let giorni = Math.floor(differenza / (1000 * 60 * 60 * 24));
+  return giorni;
 }
 console.log(howManyDays('2010-10-10'));
 
@@ -332,6 +332,8 @@ const movies = [
   },
 ]
 
+// erano quasi tutti delle modifichè di quelli di martedì
+
 function newestMovie(array) {
   let result = { Year: 1900 }
   array.forEach((movie) => {
@@ -342,7 +344,7 @@ function newestMovie(array) {
   })
   return result
 }
-console.log(newestMovie(movies))
+console.log(newestMovie(movies));
 
 /* ESERCIZIO 13
   Scrivi una funzione chiamata countMovies che ritorna il numero di film contenuti nell'array "movies" fornito.
@@ -358,10 +360,10 @@ console.log(countMovies());
 */
 
 function onlyTheYears(array) {
-  return array.map((elem) => elem.Year)
+  return array.map((elem) => elem.Year);
 }
 
-console.log(onlyTheYears(movies))
+console.log(onlyTheYears(movies));
 
 /* ESERCIZIO 15
   Scrivi una funzione chiamata "onlyInLastMillennium" che ritorna solamente i film prodotto nel millennio scorso contenuti nell'array "movies" fornito.
@@ -369,10 +371,10 @@ console.log(onlyTheYears(movies))
 
 function onlyInLastMillennium(array) {
   return array.filter((movie) => {
-    return parseInt(movie.Year) < 2000
+    return parseInt(movie.Year) < 2000;
   })
 }
-console.log(onlyInLastMillennium(movies))
+console.log(onlyInLastMillennium(movies));
 /* ESERCIZIO 16
   Scrivi una funzione chiamata "sumAllTheYears" che ritorna la somma di tutti gli anni in cui sono stati prodotti i film contenuti nell'array "movies" fornito.
 */
@@ -381,19 +383,19 @@ function sumAllTheYears(array) {
   return array.reduce((a, b) => a + parseInt(b.Year), 0)
 }
 
-console.log(sumAllTheYears(movies))
+console.log(sumAllTheYears(movies));
 
 /* ESERCIZIO 17
   Scrivi una funzione chiamata "searchByTitle" che riceve una stringa come parametro e ritorna i film nell'array "movies" fornito che la contengono nel titolo.
 */
 
 const searchByTitle = function (array, stringa) {
-  var matchingMovies = array.filter(movie => {
+  let matchingMovies = array.filter(movie => {
     return movie.Title.toLowerCase().includes(stringa.toLowerCase());
 });
 return matchingMovies;
 }
-console.log(searchByTitle(movies, 'Lord'))
+console.log(searchByTitle(movies, 'Lord'));
 
 /* ESERCIZIO 18
   Scrivi una funzione chiamata "searchAndDivide" che riceve una stringa come parametro e ritorna un oggetto contenente due array: "match" e "unmatch".
@@ -401,9 +403,8 @@ console.log(searchByTitle(movies, 'Lord'))
 */
 
 function searchAndDivide(array, stringa) {
-  var match = [];
-  var unmatch = [];
-
+  let match = [];
+  let unmatch = [];
   array.forEach(movie => {
       if (movie.Title.toLowerCase().includes(stringa.toLowerCase())) {
           match.push(movie);
@@ -413,13 +414,22 @@ function searchAndDivide(array, stringa) {
   });
   return { match: match, unmatch: unmatch };
 }
-console.log(searchAndDivide(movies, 'Lord'))
+console.log(searchAndDivide(movies, 'Lord'));
 
 /* ESERCIZIO 19
   Scrivi una funzione chiamata "removeIndex" che riceve un numero come parametro e ritorna l'array "array" fornito privo dell'elemento nella posizione ricevuta come parametro.
 */
 
-
+function removeIndex(array, n) {
+  if (n < 0 || n >= array.length) {
+      console.log("Indice non valido.");
+      return array; 
+  }
+  let newArray = array.slice(); 
+  newArray.splice(n, 1); 
+  return newArray;
+}
+console.log(removeIndex(movies, 5));
 
 // DOM (nota: gli elementi che selezionerai non si trovano realmente nella pagina)
 
@@ -427,29 +437,85 @@ console.log(searchAndDivide(movies, 'Lord'))
   Scrivi una funzione per selezionare l'elemento dotato di id "container" all'interno della pagina.
 */
 
+// si può creare l'elemento con un  container = divvo.createElement('div') e poi assegnargli un id in più modi come  divvo.id = "container";
+function selezionaContainer() {
+  let container = document.getElementById("container");
+  return container;
+}
+
+selezionaContainer();
+
 /* ESERCIZIO 21
   Scrivi una funzione per selezionare ogni tag <td> all'interno della pagina.
 */
+
+function selezionaTd() {
+  let elementi = document.querySelectorAll("td"); // getElementsByTagName('td')
+  return elementi;
+}
+
+selezionaTd();
 
 /* ESERCIZIO 22
   Scrivi una funzione che, tramite un ciclo, stampa in console il testo contenuto in ogni tag <td> all'interno della pagina.
 */
 
+function printTd() {
+  let elementi = document.querySelectorAll("td");
+  elementi.forEach(td => {
+      console.log(td.textContent);
+  });
+}
+printTd();
+
 /* ESERCIZIO 23
   Scrivi una funzione per aggiungere un background di colore rosso a ogni link all'interno della pagina.
 */
+
+function linkBackgroundRosso() {
+  let titolini = document.querySelectorAll("a");
+  titolini.forEach(link => {
+      link.style.backgroundColor = "red";  // o usando classList.add('red') e creando nel css .red { background-color: red }
+  });
+}
+linkBackgroundRosso();
 
 /* ESERCIZIO 24
   Scrivi una funzione per aggiungere un nuovo elemento alla lista non ordinata con id "myList".
 */
 
+function nuovoElemento(text) {
+  let elementino = document.createElement('li');
+  elementino.textContent = text;
+  let lista = document.getElementById('myList');
+  lista.appendChild(elementino);
+}
+// nuovoElemento('testino di cosa mettoà');
+
 /* ESERCIZIO 25
   Scrivi una funzione per svuotare la lista non ordinata con id "myList".
 */
 
+function puliziaLista() {
+  let lista = document.getElementById('myList')
+  let elementi = lista.querySelectorAll('li');
+  elementi.forEach(li => li.remove());
+}
+// si potrebbe anche dare un valore vuoto a ogni li e quindi rimangono ma non hanno più un testo
+// puliziaLista();
+
 /* ESERCIZIO 26
   Scrivi una funzione per aggiungere ad ogni tag <tr> la classe CSS "test"
 */
+
+function aggiungiClasse() {
+  let tuttiTr = document.querySelectorAll("tr");
+  tuttiTr.forEach(tr => {
+      tr.classList.add("test");
+  });
+}
+aggiungiClasse();
+
 
 // [EXTRA] JS Avanzato
 
@@ -465,6 +531,16 @@ console.log(searchAndDivide(movies, 'Lord'))
 
 */
 
+function halfTree(num){
+  let sum = ''
+for(let i=0;i<num;i++){
+sum += "*"
+console.log(sum);
+}
+}
+console.log(halfTree(6));
+
+
 /* ESERCIZIO 28
   Crea una funzione chiamata "tree" che riceve un numero come parametro e costruisce un albero di "*" (asterischi) dell'altezza fornita.
 
@@ -477,8 +553,33 @@ console.log(searchAndDivide(movies, 'Lord'))
 
 */
 
+// fatto gran parte con l'aiuto di internet
+
+function tree(height) {
+  for (let i = 1; i <= height; i++) {
+      let spaces = " ".repeat(height - i);
+      let stars = "*".repeat(2 * i - 1);
+      console.log(spaces + stars);
+  }
+}
+tree(8);
+
+
 /* ESERCIZIO 29
   Crea una funzione chiamata "isItPrime" che riceve un numero come parametro e ritorna true se il numero fornito è un numero primo.
 */
+function isItPrime(n) {
+  if (n <= 1) {
+      return false;
+  }
+  for (let i = 2; i <= Math.sqrt(n); i++) { //controllo se è divisibile solamente per se stesso e 1
+      if (n % i === 0) {
+          return false;
+      }
+  }
+  return true;
+}
+console.log(isItPrime(42));
+console.log(isItPrime(47));
 
-/* Questo array viene usato per gli esercizi. Non modificarlo. */
+/* Questo array viene usato per gli esercizi. Non modificarlo. */   // spostato sopra per dichiararlo prima dei richiami
