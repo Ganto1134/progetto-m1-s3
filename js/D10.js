@@ -371,7 +371,8 @@ console.log(onlyTheYears(movies));
 
 function onlyInLastMillennium(array) {
   return array.filter((movie) => {
-    return parseInt(movie.Year) < 2000;
+    const anno = parseInt(movie.Year);
+    return anno >= 1000 && anno <= 2000;
   })
 }
 console.log(onlyInLastMillennium(movies));
@@ -422,7 +423,7 @@ console.log(searchAndDivide(movies, 'Lord'));
 
 function removeIndex(array, n) {
   if (n < 0 || n >= array.length) {
-      console.log("Indice non valido.");
+      console.log("Non funge.");
       return array; 
   }
   let newArray = array.slice(); 
@@ -475,7 +476,7 @@ printTd();
 function linkBackgroundRosso() {
   let titolini = document.querySelectorAll("a");
   titolini.forEach(link => {
-      link.style.backgroundColor = "red";  // o usando classList.add('red') e creando nel css .red { background-color: red }
+      link.style.backgroundColor = "red";  // o usando classList.add('red') e creando nel css .red { background-color: red; }
   });
 }
 linkBackgroundRosso();
@@ -511,7 +512,7 @@ function puliziaLista() {
 function aggiungiClasse() {
   let tuttiTr = document.querySelectorAll("tr");
   tuttiTr.forEach(tr => {
-      tr.classList.add("test");
+      tr.classList.add("red");
   });
 }
 aggiungiClasse();
@@ -555,9 +556,9 @@ console.log(halfTree(6));
 
 // fatto gran parte con l'aiuto di internet
 
-function tree(height) {
-  for (let i = 1; i <= height; i++) {
-      let spaces = " ".repeat(height - i);
+function tree(altezza) {
+  for (let i = 1; i <= altezza; i++) {
+      let spaces = " ".repeat(altezza - i);
       let stars = "*".repeat(2 * i - 1);
       console.log(spaces + stars);
   }
